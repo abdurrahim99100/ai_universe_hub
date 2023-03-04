@@ -6,10 +6,13 @@ function lodeData() {
 };
 
 function displayAlldata(data) {
+    // loder spiner;
+    
+
     // console.log(data[0]);
     // data slice kora holo;
     data = data.slice(0, 6)
-
+    
     for (const user of data) {
         // console.log(user.features[0]);
         const mainContainer = document.getElementById('main-container');
@@ -42,8 +45,11 @@ function displayAlldata(data) {
 
 // show more all data in display;
 document.getElementById('btn-showall').addEventListener('click', function() {
+    toggleSpiner(true)
+
     const cleairMaincontainer = document.getElementById('main-container');
     cleairMaincontainer.innerHTML = '';
+    // spiner click;
     
     const url = (`https://openapi.programming-hero.com/api/ai/tools`);
     fetch(url)
@@ -81,18 +87,20 @@ document.getElementById('btn-showall').addEventListener('click', function() {
             </div>
                 `
                 mainContainer.appendChild(creatElement);
+                toggleSpiner(false)
             }
         };
 });
 // show all data ind;
-
+// loder stop;
 
 
 
 
 
 const lodeModalData = async id => {
-   
+    // loder start;
+    
     const url = `https://openapi.programming-hero.com/api/ai/tool/${id}`;
     const res = await fetch(url);
     const data = await res.json();
@@ -151,8 +159,19 @@ const lodeModalData = async id => {
         <h4>${data.data.input_output_examples[0].input}</h4>
         <p>${data.data.input_output_examples[0].output}</p>
     `;
+};
 
-        
 
+// spiner section js cole;
+
+function toggleSpiner(isLoding){
+    const loderSection = document.getElementById('spiner-container');
+
+    if(isLoding){
+        loderSection.classList.remove('d-none')
+    }
+    else{
+        loderSection.classList.add('d-none')
+    }
 
 };
