@@ -23,9 +23,9 @@ function displayAlldata(data) {
         <img src="${user.image}" class="card-img-top" alt="...">
         <div class="card-body">
             <h5 class="card-title">Features</h5>
-            <p class="card-text lh-base">${user.features[0]}</p>
-            <p class="card-text lh-base">${user.features[1]}</p>
-            <p class="card-text lh-base">${user.features[2]}</p>
+            <p class="card-text lh-base">${user.features[0] ? user.features[0] :'no data found'}</p>
+            <p class="card-text lh-base">${user.features[1] ? user.features[1] :'no data found'}</p>
+            <p class="card-text lh-base">${user.features[2] ? user.features[2] :'no data found'}</p>
             <hr>
             <h3 class="">${user.name}</h3>
             <div class="d-flex justify-content-between align-items-center my-1">
@@ -73,13 +73,13 @@ document.getElementById('btn-showall').addEventListener('click', function() {
                 <img src="${user.image}" class="card-img-top" alt="...">
                 <div class="card-body">
                     <h5 class="card-title">Features</h5>
-                    <p class="card-text lh-base">${user.features[0]}</p>
-                    <p class="card-text lh-base">${user.features[1]}</p>
-                    <p class="card-text lh-base">${user.features[2]}</p>
+                    <p class="card-text lh-base">${user.features[0] ? user.features[0] : 'no data found'}</p>
+                    <p class="card-text lh-base">${user.features[1] ? user.features[1] : 'no data found'}</p>
+                    <p class="card-text lh-base">${user.features[2] ? user.features[2] : 'no data found'}</p>
                     <hr>
                     <h3 class="">${user.name}</h3>
                     <div class="d-flex justify-content-between align-items-center my-1">
-                        <p><img src="icon/calendar.png" alt=""> ${user.published_in}</p>
+                        <p><img src="icon/calendar.png" alt=""> ${user.published_in ? user.published_in : 'no data found'}</p>
         
                         <button onclick="lodeModalData('${user.id}')" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal"><img src="icon/add.png" alt=""></button>
                     </div>
@@ -108,20 +108,20 @@ const lodeModalData = async id => {
     
     // discription;
     const modalDetails = document.getElementById('modal-discription');
-    modalDetails.innerText = data.data.description;
+    modalDetails.innerText = data.data.description? data.data.description: 'no data found';
     
     // price
     const priceBasec = document.getElementById('s-basic');
-    priceBasec.innerText = data.data.pricing[0].plan;
+    priceBasec.innerText = data.data.pricing[0].plan ? data.data.pricing[0].plan: 'Free';
 
     const basicAmount = document.getElementById('b-amount');
-    basicAmount.innerText = data.data.pricing[0].price;
+    basicAmount.innerText = data.data.pricing[0].price ? data.data.pricing[0].price: 'Free';
 
     const pricePro = document.getElementById('s-pro');
-    pricePro.innerText = data.data.pricing[1].plan;
+    pricePro.innerText = data.data.pricing[1].plan ? data.data.pricing[1].plan : 'Free';
 
     const proAmount = document.getElementById('p-Amount');
-    proAmount.innerText = data.data.pricing[1].price;
+    proAmount.innerText = data.data.pricing[1].price ? data.data.pricing[1].price : 'Free';
 
     const priceEh = document.getElementById('prich-eh');
     priceEh.innerText = data.data.pricing[2].plan;
@@ -141,13 +141,13 @@ const lodeModalData = async id => {
     
     // Integrations;
     const integOne = document.getElementById('integ-one');
-    integOne.innerText = data.data.integrations[0];
+    integOne.innerText = data.data.integrations[0] ? data.data.integrations[0] : 'no data found';
     
     const integTwo = document.getElementById('integ-two');
-    integTwo.innerText = data.data.integrations[1];
+    integTwo.innerText = data.data.integrations[1] ? data.data.integrations[1] : 'no data found';
     
     const integThree = document.getElementById('integ-three');
-    integThree.innerText = data.data.integrations[2];
+    integThree.innerText = data.data.integrations[2] ? data.data.integrations[2] : 'no data found';
 
 
 
