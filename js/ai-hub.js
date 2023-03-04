@@ -83,12 +83,8 @@ document.getElementById('btn-showall').addEventListener('click', function() {
                 mainContainer.appendChild(creatElement);
             }
         };
-
-
-
-
 });
-
+// show all data ind;
 
 
 
