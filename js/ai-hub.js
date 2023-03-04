@@ -39,14 +39,7 @@ function displayAlldata(data) {
 
 
 
-// phone modal open;
 
-// function lodeModalData() {
-//     const url = (`https://openapi.programming-hero.com/api/ai/tools`);
-//     fetch(url)
-//         .then(res => res.json())
-//         .then(data => displayModalData(data.data.tools))
-// };
 
 const lodeModalData = async id => {
     
