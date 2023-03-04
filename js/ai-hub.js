@@ -6,12 +6,12 @@ function lodeData() {
 };
 
 function displayAlldata(data) {
-    // console.log(data);
+    // console.log(data[0]);
     // data slice kora holo;
     data = data.slice(0, 6)
 
     for (const user of data) {
-        // console.log(user.id);
+        // console.log(user.features[0]);
         const mainContainer = document.getElementById('main-container');
 
         const creatElement = document.createElement('div');
@@ -20,11 +20,9 @@ function displayAlldata(data) {
         <img src="${user.image}" class="card-img-top" alt="...">
         <div class="card-body">
             <h5 class="card-title">Features</h5>
-            <p class="card-text lh-base">
-            1. Natural language processing. <br>
-            2. Contextual understanding. <br>
-            3. Text generation.
-            </p>
+            <p class="card-text lh-base">${user.features[0]}</p>
+            <p class="card-text lh-base">${user.features[1]}</p>
+            <p class="card-text lh-base">${user.features[2]}</p>
             <hr>
             <h3 class="">${user.name}</h3>
             <div class="d-flex justify-content-between my-5">
@@ -57,7 +55,7 @@ const lodeModalData = async id => {
     const url = `https://openapi.programming-hero.com/api/ai/tool/${id}`;
     const res = await fetch(url);
     const data = await res.json();
-    console.log(data.data.accuracy.score);
+    // console.log(data.data.features[1].feature_name);
     
     // discription;
     const modalDetails = document.getElementById('modal-discription');
@@ -107,10 +105,10 @@ const lodeModalData = async id => {
     // image;
     const modalImage = document.getElementById('modal-images');
     modalImage.innerHTML = `
-        <p class="bg-danger rounded px-2 mt-2" style="width: 120px; position: absolute;right: 30px;">accuracy ${data.data.accuracy.score}</p>
+        <p class="bg-danger rounded px-2 mt-2" style="width: 120px; position: absolute;right: 50px;">accuracy ${data.data.accuracy.score}</p>
         <img class="rounded mx-auto" style="width: 330px; height: 200px;" src="${data.data.image_link[0]}" alt="">
-        <h4>Hi, how are you doing today?</h4>
-        <p>I'm doing well, thank you for asking. How can I assist you today?</p>
+        <h4>${data.data.input_output_examples[0].input}</h4>
+        <p>${data.data.input_output_examples[0].output}</p>
     `;
 
         
