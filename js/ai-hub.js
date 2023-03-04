@@ -8,7 +8,7 @@ function lodeData() {
 function displayAlldata(data) {
     // console.log(data[0]);
     // data slice kora holo;
-    data = data.slice(0, 6)
+    data = data.slice(0, 12)
 
     for (const user of data) {
         // console.log(user.features[0]);
@@ -25,7 +25,7 @@ function displayAlldata(data) {
             <p class="card-text lh-base">${user.features[2]}</p>
             <hr>
             <h3 class="">${user.name}</h3>
-            <div class="d-flex justify-content-between my-5">
+            <div class="d-flex justify-content-between align-items-center my-1">
                 <p><img src="icon/calendar.png" alt=""> ${user.published_in}</p>
 
                 <button onclick="lodeModalData('${user.id}')" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal"><img src="icon/add.png" alt=""></button>
@@ -37,14 +37,14 @@ function displayAlldata(data) {
     }
 };
 
+// show more all data in display;
+
 
 
 
 
 const lodeModalData = async id => {
-    
-    
-    
+   
     const url = `https://openapi.programming-hero.com/api/ai/tool/${id}`;
     const res = await fetch(url);
     const data = await res.json();
