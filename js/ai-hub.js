@@ -8,7 +8,7 @@ function lodeData() {
 function displayAlldata(data) {
     // console.log(data[0]);
     // data slice kora holo;
-    data = data.slice(0, 12)
+    data = data.slice(0, 6)
 
     for (const user of data) {
         // console.log(user.features[0]);
@@ -37,7 +37,59 @@ function displayAlldata(data) {
     }
 };
 
+
+
+
 // show more all data in display;
+document.getElementById('btn-showall').addEventListener('click', function() {
+    const cleairMaincontainer = document.getElementById('main-container');
+    cleairMaincontainer.innerHTML = '';
+    
+    const url = (`https://openapi.programming-hero.com/api/ai/tools`);
+    fetch(url)
+        .then(res => res.json())
+        .then(data => showAlldata(data.data.tools))
+        
+        
+        function showAlldata(data) {
+            // console.log(data[0]);
+            // data slice kora holo;
+            // data = data.slice(0, 6)
+        
+            for (const user of data) {
+                // console.log(user.features[0]);
+                const mainContainer = document.getElementById('main-container');
+                
+        
+                const creatElement = document.createElement('div');
+                creatElement.innerHTML = `
+                <div class="card mb-5" style="height: 550px;">
+                <img src="${user.image}" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">Features</h5>
+                    <p class="card-text lh-base">${user.features[0]}</p>
+                    <p class="card-text lh-base">${user.features[1]}</p>
+                    <p class="card-text lh-base">${user.features[2]}</p>
+                    <hr>
+                    <h3 class="">${user.name}</h3>
+                    <div class="d-flex justify-content-between align-items-center my-1">
+                        <p><img src="icon/calendar.png" alt=""> ${user.published_in}</p>
+        
+                        <button onclick="lodeModalData('${user.id}')" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal"><img src="icon/add.png" alt=""></button>
+                    </div>
+                </div>
+            </div>
+                `
+                mainContainer.appendChild(creatElement);
+            }
+        };
+
+
+
+
+});
+
+
 
 
 
